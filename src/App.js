@@ -19,7 +19,7 @@ function App() {
         listCustomers.map(customer => (      
         <div key={(customer.id)} className="list-group mb-3">
           <a href="#" className="shadow list-group-item list-group-item-action" aria-current="true">
-            <Customer item={customer}/>
+            <Customer object={customer}/>
           </a>
         </div>
       ))

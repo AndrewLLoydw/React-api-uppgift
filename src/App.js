@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react';
 import './App.css';
+import Customer from './components/Customer';
 
 function App() {
+  const [customers, setCustomers] = useState([])
+  useEffect(() => {
+
+    async function fetchData() {
+      const res = await fetch("https://ecexam-webapi.azurewebsites.net/api/customers")
+      setCustomers(await res.json())
+    }
+    fetchData()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mx-5 mt-4 row row-cols-3 d-flex">
+      {
+        customers.map(customer => (      
+        <div key={(customer.id)} className="list-group mb-3">
+          <a href="#" className="shadow list-group-item list-group-item-action" aria-current="true">
+            <Customer item={customer}/>
+          </a>
+        </div>
+      ))
+      }
     </div>
   );
 }

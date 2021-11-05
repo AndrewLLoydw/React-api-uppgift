@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react';
 import './App.css';
 import Customer from './components/Customer';
 
+
+
 function App() {
   const [listCustomers, setCustomerList] = useState([])
   useEffect(() => {
@@ -9,8 +11,11 @@ function App() {
     async function fetchData() {
       const response = await fetch("https://ecexam-webapi.azurewebsites.net/api/customers")
       setCustomerList(await response.json())
+
     }
+
     fetchData()
+
   }, [])
 
   return (
@@ -24,6 +29,7 @@ function App() {
         </div>
       ))
       }
+      
     </div>
   );
 }

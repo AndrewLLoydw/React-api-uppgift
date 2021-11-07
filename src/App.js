@@ -19,7 +19,7 @@ function App() {
   }, [])
 
   return (
-    <div className="mx-5 mt-4 row row-cols-3 d-flex">
+    <div className="mx-5 mt-4 row row-cols-2 d-flex">
       {
         listCustomers.map(customer => (      
         <div key={(customer.id)} className="list-group mb-3">
